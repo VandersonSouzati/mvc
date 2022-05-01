@@ -31,6 +31,7 @@ public class CursomvcApplication implements CommandLineRunner{
 		Categoria cat1 = new Categoria(null, "Informática");
 		Categoria cat2 = new Categoria(null, "Escritório");
 		
+		
 		Produto p1 = new Produto(null, "Computador", 2000.00);
 		Produto p2 = new Produto(null, "Impressora", 200.00);
 		Produto p3 = new Produto(null, "Mouse", 80.00);

@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import curso.springboot.cursomvc.exception.MyExceptionObjectNotFound;
 import curso.springboot.cursomvc.model.Categoria;
 import curso.springboot.cursomvc.repository.CategoriaRepository;
 
@@ -16,6 +17,8 @@ public class CategoriaService {
 	
 	public Categoria buscaCategoria(Integer id){
 		Optional<Categoria> obj = repository.findById(id);
-		return obj.get();
+		return obj.orElseThrow(() -> new MyExceptionObjectNotFound(
+				   "Objeto não encontrado id " + id + " na busca por categoria"
+				));
 	}
 }
