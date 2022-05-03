@@ -1,6 +1,7 @@
 package curso.springboot.cursomvc.service;
 
 import java.util.Optional;
+import java.util.function.Supplier;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,10 +16,21 @@ public class CategoriaService {
     @Autowired   
 	private CategoriaRepository repository;
 	
+    /*
+    Supplier<MyExceptionObjectNotFound> supplier = new Supplier<>() {
+
+		@Override
+		public MyExceptionObjectNotFound get() {
+			
+			return new MyExceptionObjectNotFound("Teste");
+		}
+	     
+    };
+    */
+    
 	public Categoria buscaCategoria(Integer id){
 		Optional<Categoria> obj = repository.findById(id);
-		return obj.orElseThrow(() -> new MyExceptionObjectNotFound(
-				   "Objeto não encontrado id " + id + " na busca por categoria"
-				));
+	
+		return obj.orElseThrow(() -> new MyExceptionObjectNotFound("Categoria not found Id: " + id));
 	}
 }
